@@ -11,7 +11,7 @@ def main():
         tmp = scan_list[3:8]
         print(tmp)
 
-        if tmp =! [2,2,2,2,2]:
+        if tmp != [2,2,2,2,2]:
             fc.stop()
             fc.backward(30)
             fc.time.sleep(0.2)
