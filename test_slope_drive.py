@@ -98,8 +98,8 @@ def test():
      # plt.imshow(grid, origin='lower')
      # plt.show()
      plt.plot(grid)
-     plt.savefig('foo.png')
-     plt.savefig('foo.pdf')
+     plt.savefig('/home/pi/foo.png')
+
 
 
  
