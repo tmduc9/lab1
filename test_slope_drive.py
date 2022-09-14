@@ -95,8 +95,11 @@ def test():
      prev_y = y
        
      
-     plt.imshow(grid, origin='lower')
-     plt.show()
+     # plt.imshow(grid, origin='lower')
+     # plt.show()
+     plt.plot(grid)
+     plt.savefig('foo.png')
+
 
  
 
