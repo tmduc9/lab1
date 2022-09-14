@@ -99,7 +99,7 @@ def test():
      # plt.show()
      #plt.plot(grid)
      # plt.savefig('/home/pi/foo.png')
-     print(np.matrix(grid))
+     print(np.matrix(grid[40:60,0:10]))
 
 
 
