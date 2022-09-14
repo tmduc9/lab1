@@ -97,8 +97,9 @@ def test():
      
      # plt.imshow(grid, origin='lower')
      # plt.show()
-     plt.plot(grid)
-     plt.savefig('/home/pi/foo.png')
+     #plt.plot(grid)
+     # plt.savefig('/home/pi/foo.png')
+     print(np.matrix(grid))
 
 
 
