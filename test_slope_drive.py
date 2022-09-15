@@ -95,7 +95,7 @@ def test():
      prev_y = y
 
 
-     plt.use('module://matplotlib-sixel')
+     matplotlib.use('module://matplotlib-sixel')
      plt.imshow(grid, origin='lower')
      plt.show()
      #plt.plot(grid)
