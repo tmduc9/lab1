@@ -5,12 +5,12 @@ import matplotlib.pyplot as plt
 import os
 
 from PIL import Image
-# from tflite_runtime.interpreter import Interpreter
+from tflite_runtime.interpreter import Interpreter
 from picar_4wd.servo import Servo
 from picar_4wd.pwm import PWM
 import sys
 
-# import cv2
+import cv2
 
 def test():
  total_left = 0
