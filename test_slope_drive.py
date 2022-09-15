@@ -2,7 +2,8 @@ import picar_4wd as fc
 import numpy as np
 import picamera
 import matplotlib.pyplot as plt
-import matplotlib
+import terminalplot as tp
+
 
 from PIL import Image
 # from tflite_runtime.interpreter import Interpreter
@@ -96,9 +97,9 @@ def test():
      prev_y = y
 
 
-     matplotlib.use('module://matplotlib-sixel')
-     plt.imshow(grid, origin='lower')
-     plt.show()
+     #plt.imshow(grid, origin='lower')
+     #plt.show()
+     tp.plot(grid)
      #plt.plot(grid)
      # plt.savefig('/home/pi/foo.png')
      #print(np.matrix(grid[40:60,0:10]))
