@@ -22,7 +22,7 @@ import time
 CAMERA_WIDTH = 600
 CAMERA_HEIGHT = 400
 threshold = 0.60
-    
+
 def load_labels(path):
   """Loads the labels file. Supports files with or without index numbers."""
   with open(path, 'r', encoding='utf-8') as f:
@@ -72,11 +72,11 @@ def detect_objects(interpreter, image, threshold):
   return results
 
 def test():
- labels = load_labels('/home/pi/picar-4wd/examples/coco/coco_labels.txt')
- interpreter = Interpreter('/home/pi/picar-4wd/examples/coco/detect.tflite')
+ labels = load_labels('/home/pi/picar-4wd/lab1/coco_labels.txt')
+ interpreter = Interpreter('/home/pi/picar-4wd/lab1/detect.tflite')
  interpreter.allocate_tensors()
  _, input_height, input_width, _ = interpreter.get_input_details()[0]['shape']
- 
+
  with picamera.PiCamera(
       resolution=(CAMERA_WIDTH, CAMERA_HEIGHT), framerate=30) as camera:
     #camera.start_preview()
@@ -90,17 +90,17 @@ def test():
           image = Image.open(stream).convert('RGB').resize(
             (input_width, input_height), Image.ANTIALIAS)
           results = detect_objects(interpreter, image, threshold)
-        
-     
+
+
           ser = Servo(PWM("P0")) # reset angle
           ser.set_angle(0)
 
-          angle_step = 6 # angle step 
+          angle_step = 6 # angle step
           grid = np.zeros((100,100)) # initialize numpy array (origin is 50,0)
-         
+
           prev_x = 0
           prev_y = 0
-         
+
           for i in range (-10,11): #calculate all points of objects
            tmp = fc.get_distance_at(i*angle_step)
            x = 49 + np.int(tmp * np.sin(np.radians(i*angle_step)))
@@ -110,7 +110,7 @@ def test():
            if y > 99:
             y = 99
            grid[x,y] = 1
-          
+
            if (prev_x and prev_y) and (y - prev_y) != 0:
               diff = abs(y - prev_y)
               #print(diff)
@@ -134,16 +134,16 @@ def test():
                            if new_y > 99:
                                new_y = 99
                            grid[new_x,new_y] = 1
-          
+
           speed4 = fc.Speed(25)
           speed4.start()
-         
-   
+
+
           if np.all(grid[40:60,0:10]==0):
            fc.forward(100)
            x = 0
            fc.time.sleep(1)
-                        
+
            speed = speed4()
            x += speed * 0.5
            speed4.deinit()
@@ -163,12 +163,12 @@ def test():
               fc.turn_right(100)
               fc.time.sleep(2)
               fc.stop()
-              
+
           print(total_forward)
-          
+
           prev_x = x
           prev_y = y
-          
+
           for obj in results:
             if (labels[obj['class_id']] == 'stop sign'):
              print(labels[obj['class_id']])
@@ -179,8 +179,8 @@ def test():
 
           #plt.imshow(grid, origin='lower')
           #plt.show()
-      fc.stop() 
-             
+      fc.stop()
+
 
     finally:
       camera.stop_preview()
@@ -188,4 +188,3 @@ def test():
 
 if __name__ == "__main__":
  test()
- 
