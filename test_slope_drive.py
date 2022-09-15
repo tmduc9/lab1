@@ -2,6 +2,7 @@ import picar_4wd as fc
 import numpy as np
 import picamera
 import matplotlib.pyplot as plt
+import matplotlib
 
 from PIL import Image
 # from tflite_runtime.interpreter import Interpreter
