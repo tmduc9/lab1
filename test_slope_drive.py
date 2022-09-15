@@ -95,7 +95,7 @@ def test():
      prev_x = x
      prev_y = y
 
-     os.chmod('foo.png', 0o777)
+     #os.chmod('foo.png', 0o777)
 
      #plt.imshow(grid, origin='lower')
      #plt.show()
