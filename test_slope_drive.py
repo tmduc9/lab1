@@ -2,9 +2,11 @@ import picar_4wd as fc
 import numpy as np
 import picamera
 import matplotlib.pyplot as plt
+import tflite_runtime.interpreter as Interpreter
+
+
 
 from PIL import Image
-from tflite_runtime.interpreter import Interpreter
 from picar_4wd.servo import Servo
 from picar_4wd.pwm import PWM
 import sys
