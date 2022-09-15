@@ -2,11 +2,10 @@ import picar_4wd as fc
 import numpy as np
 import picamera
 import matplotlib.pyplot as plt
-import terminalplot as tp
-
+import os
 
 from PIL import Image
-# from tflite_runtime.interpreter import Interpreter
+from tflite_runtime.interpreter import Interpreter
 from picar_4wd.servo import Servo
 from picar_4wd.pwm import PWM
 import sys
@@ -96,12 +95,13 @@ def test():
      prev_x = x
      prev_y = y
 
+     os.chmod('foo.png', 0o777)
 
      #plt.imshow(grid, origin='lower')
      #plt.show()
-     tp.plot(grid)
-     #plt.plot(grid)
-     # plt.savefig('/home/pi/foo.png')
+     #tp.plot(grid)
+     plt.plot(grid)
+     plt.savefig('/home/pi/foo.png')
      #print(np.matrix(grid[40:60,0:10]))
 
 
