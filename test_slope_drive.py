@@ -2,7 +2,6 @@ import picar_4wd as fc
 import numpy as np
 import picamera
 import matplotlib.pyplot as plt
-import os
 
 from PIL import Image
 from tflite_runtime.interpreter import Interpreter
@@ -16,7 +15,7 @@ def test():
  total_left = 0
  total_right = 0
  total_forward = 0
- distance = 20
+ distance = 500
  while total_forward < distance:
 
      ser = Servo(PWM("P0")) # reset angle
@@ -95,16 +94,9 @@ def test():
      prev_x = x
      prev_y = y
 
-     #os.chmod('foo.png', 0o777)
 
-     #plt.imshow(grid, origin='lower')
-     #plt.show()
-     #tp.plot(grid)
-     plt.plot(grid)
+     plt.imshow(grid, origin='lower')
      plt.savefig('foo.png')
-     #print(np.matrix(grid[40:60,0:10]))
-
-
 
 
 
